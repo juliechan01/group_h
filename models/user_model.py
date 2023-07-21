@@ -12,8 +12,9 @@ class User:
         self.id = data_row['id']
         self.first_name = data_row['first_name']
         self.last_name = data_row['last_name']
-        self.email = data_row['e    mail']
+        self.email = data_row['email']
         self.password = data_row['password']
+        self.birthday = data_row['birthday']
         self.created_at = data_row['created_at']
         self.updated_at = data_row['updated_at']
         self.my_pictures = []
@@ -22,7 +23,7 @@ class User:
         def save(cls, data_row):
             query = """
             INSERT INTO users(first_name, last_name, email, password) 
-            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s)
+            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(birthday)s)
             """
 
         @staticmethod
