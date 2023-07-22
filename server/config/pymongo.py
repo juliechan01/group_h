@@ -7,6 +7,7 @@ business_collection = db["businesses"]
 
 
 # posts are like entries in another database; we are inserting 'posts' into the database of users below
+# RESEARCH BEING DONE ON MONGODB INTEGRATION; PLEASSSSSE BE PATIENT
 
 post = {"_id" : 0, "name" : "Tim", "score" : 5}
 

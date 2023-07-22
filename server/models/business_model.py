@@ -15,11 +15,6 @@ class Business:
         self.created_at = data_row['created_at']
         self.updated_at = data_row['updated_at']
 
-    @classmethod
-    def save(cls, data_row):
-        query = """
-        INSERT INTO businesses(type, name, address, phone_number, business_hours, offerings) 
-        VALUES (%(type)s, %(name)s, %(address)s, %(phone_number)s, %(business_hours)s, %(offerings)s)
-        """
-
-        # creating other class methods soon
+        # must create getAll() class method me for index page
+        # must create getOneBusiness() class method
+        #  
