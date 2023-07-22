@@ -17,4 +17,4 @@ class Business:
 
         # must create getAll() class method me for index page
         # must create getOneBusiness() class method
-        #  
+        # must create editBusiness() class method to allow user to edit his/her business

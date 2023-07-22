@@ -19,14 +19,8 @@ class User:
         self.my_pictures = []
 
         # must create save() class method for new users
-        # currently have mySQL query for this; will update to MongoDB syntax soon
+        # must create edit() class method for users to edit their profile
         
-        @classmethod
-        def save(cls, data_row):
-            query = """
-            INSERT INTO users(first_name, last_name, email, password) 
-            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, %(birthday)s)
-            """
 
         @staticmethod
         def validate_user(form):
@@ -46,7 +40,7 @@ class User:
             if not form['password'] == form['confirm_password']:
                 is_valid = False
                 flash("Your passwords must match.")
-            if len(form['birthday']) < 18:
+            if (form['birthday']) < 18:
                 is_valid = False
                 flash("You must be 18 years old or older to join yiip.")
             return is_valid
