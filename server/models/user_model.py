@@ -1,4 +1,3 @@
-from server.config import connectToMySQL
 from flask import flash
 import re
 
@@ -19,6 +18,9 @@ class User:
         self.updated_at = data_row['updated_at']
         self.my_pictures = []
 
+        # must create save() class method for new users
+        # currently have mySQL query for this; will update to MongoDB syntax soon
+        
         @classmethod
         def save(cls, data_row):
             query = """
@@ -44,4 +46,7 @@ class User:
             if not form['password'] == form['confirm_password']:
                 is_valid = False
                 flash("Your passwords must match.")
+            if len(form['birthday']) < 18:
+                is_valid = False
+                flash("You must be 18 years old or older to join yiip.")
             return is_valid
