@@ -21,7 +21,8 @@ def register():
 def register():
     if request.form['action'] == 'register':
 
-        # User model validation can be utilized here; improper validation creates redirect to register page
+        # User model validation can be utilized here; improper 
+        # validation creates redirect to register page
         if not User.validate_user(request.form):
             return redirect('/register')
 
@@ -54,18 +55,17 @@ def register():
 
 @app.route('/login', methods = ['post'])
 def login():
-    if request.form['action'] == 'user_login':
-        data_row = {
-            'email' : request.form['email']
-        }
-        user_in_db = User.get_by_email(data_row)
+    data_row = {
+        'email' : request.form['email']
+    }
+    user_in_db = User.get_by_email(data_row)
 
-        if not user_in_db:
-            flash("Invalid Email/Password.")
-            return redirect('/')
-        if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
-            flash("Invalid Email/Password.")
-            return redirect('/')
+    if not user_in_db:
+        flash("Invalid Email/Password.")
+        return redirect('/login')
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
+        flash("Your passwords don't match up. Try again, if it really is you.")
+        return redirect('/login')
 
     session['user_id'] = user_in_db.id
     return redirect('/dashboard')
