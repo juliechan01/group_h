@@ -1,5 +1,10 @@
 from flask import flash
 import re
+from server.models import Business
+from server.controllers import user_controller, home_controller, business_controller
+# User model from mySQL has the connection to database take place here, with all querying
+# and methods (class and static) taking place here; file is currently the "main.py" file
+
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -20,7 +25,10 @@ class User:
 
         # must create save() class method for new users
         # must create edit() class method for users to edit their profile
-        
+        @classmethod
+        def register_user(cls, data_row):
+            pass
+
 
         @staticmethod
         def validate_user(form):
