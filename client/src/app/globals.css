@@ -3,6 +3,71 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    background-color: #061826;
+}
+
+.body-div {
+    color: white;
+}
+
+.sign-up-btn {
+    color: black;
+    background-color: #B5C9C3;
+    padding: 5px;
+    border-radius: 25%;
+}
+
+.sign-up-btn:hover {
+    color: black;
+    background-color: #9ba9a5;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-bar-component {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-bar-component a:hover {
+    color: rgb(209, 209, 209);
+}
+
+.nav-bar-component h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.resturant-carousel {
+    display: flex;
+    margin: 250px auto 0;
+}
+
+.resturant {
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: 0 auto;
+    width: 175px;
+    height: 250px;
+    border: solid 2px #124770;
+}
+
+.resturant p {
+    margin-bottom: 100px;
+}
+
 .container {
     position: relative;
     width: 100%;
@@ -171,12 +236,12 @@ form.register {
     left: 25%;
 }
 
-.container.register-mode form.login{
+.container.register-mode form.login {
     z-index: 1;
     opacity: 0;
 }
 
-.container.register-mode form.register{
+.container.register-mode form.register {
     z-index: 2;
     opacity: 1;
 }
