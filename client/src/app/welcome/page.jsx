@@ -1,10 +1,8 @@
 'use client'
-
-import React from 'react'
+import React from 'react';
 import Image from 'next/image'
 
-function page() {
-
+function Welcome() {
 	const addContainerClassHandler = (e) => {
 		e.preventDefault()
 		document.getElementById('container').classList.add("register-mode")
@@ -106,4 +104,4 @@ function page() {
 	)
 }
 
-export default page
+export default Welcome;
