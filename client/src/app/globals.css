@@ -39,7 +39,7 @@ html {
     color: rgb(209, 209, 209);
 }
 
-.nav-bar-component h1 {
+.nav-bar-component h1, .logo {
     display: block;
     font-size: 2em;
     margin-top: 0.67em;
@@ -187,6 +187,9 @@ form.register {
 .panel .content {
     color: white;
     transition: .9s .6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .panel p {

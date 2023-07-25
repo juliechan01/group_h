@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image'
+import Link from 'next/link';
 
 function Welcome() {
 	const addContainerClassHandler = (e) => {
@@ -88,12 +89,14 @@ function Welcome() {
 				<div className='panels-container'>
 					<div className='panel left-panel'>
 						<div className='content'>
+							<Link href="/" className='logo'>yiip</Link>
 							<p>New here?</p>
 							<button className='form-button transparent' id='register-button' onClick={addContainerClassHandler}>Register</button>
 						</div>
 					</div>
 					<div className='panel right-panel'>
 						<div className='content'>
+							<Link href="/" className='logo'>yiip</Link>
 							<p>Already Registered?</p>
 							<button className='form-button transparent' id='login-button' onClick={removeContainerClassHandler}>Login</button>
 						</div>
