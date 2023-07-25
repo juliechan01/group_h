@@ -34,7 +34,7 @@ function page() {
 						alt='Placeholder Resturant Image'
 					/>
 
-					<p>Resturant Name</p>
+					<p>Restaurant Name</p>
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 
@@ -46,7 +46,7 @@ function page() {
 						alt='Placeholder Resturant Image'
 					/>
 
-					<p>Resturant Name</p>
+					<p>Restaurant Name</p>
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 
@@ -58,7 +58,7 @@ function page() {
 						alt='Placeholder Resturant Image'
 					/>
 
-					<p>Resturant Name</p>
+					<p>Restaurant Name</p>
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 
@@ -70,11 +70,11 @@ function page() {
 						alt='Placeholder Resturant Image'
 					/>
 
-					<p>Resturant Name</p>
+					<p>Restaurant Name</p>
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 
-				<div className='resturant'>
+				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
 						height={250}
@@ -82,7 +82,7 @@ function page() {
 						alt='Placeholder Resturant Image'
 					/>
 
-					<p>Resturant Name</p>
+					<p>Restaurant Name</p>
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 			</div>
