@@ -5,7 +5,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app)
 
-
 # **** fetch route for frontend will be 127.0.0.1:8080/api/home
 @app.route("/api/home", methods = ['GET'])
 def return_home():
