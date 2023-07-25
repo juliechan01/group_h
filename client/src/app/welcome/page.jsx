@@ -88,13 +88,15 @@ function Welcome() {
 				<div className='panels-container'>
 					<div className='panel left-panel'>
 						<div className='content'>
-							<p>New here?</p>
+							<p>Let's create more memorable moments together.</p>
+							<h3>New here?</h3>
 							<button className='form-button transparent' id='register-button' onClick={addContainerClassHandler}>Register</button>
 						</div>
 					</div>
 					<div className='panel right-panel'>
 						<div className='content'>
-							<p>Already Registered?</p>
+							<p>Don't miss out on another experience. Sign up today.</p>
+							<h3>Already Registered?</h3>
 							<button className='form-button transparent' id='login-button' onClick={removeContainerClassHandler}>Login</button>
 						</div>
 					</div>
