@@ -1,0 +1,27 @@
+7/22/2023 update 
+
+noSQL storage structure, and it's fast (and usually for that reason)
+
+one of the simplest to learn and great for enterprise level productions
+
+MKT-TIM is a $25 credit code if you make an account on the Atlas site (I have no idea if this code is still valid)
+
+In MongoDB, a "cluster" is like an abstraction above the database; technically, databases are inside of a cluster, although we'll still be creating databases (I've made one called yiip) that house collections (tables).
+
+DATABASE -> COLLECTIONS -> DOCUMENTS
+
+Most databases are RDBMS (relational database management systems)
+
+SQL is structured queried language, and noSQL databases (like MongoDB) allow:
+- ability to perform frequent changes
+- highly flexible
+- typically faster
+- scaleable
+- integrates perfectly with json
+
+Interally, MongoDB uses something called BSON (JavaScript); you will often see, especially for fetching information by IDs, the need to import something called ObjectID.
+You can see me doing this currently with get_user_by_id (READ) and update_user_by_id (UPDATE) functions in the main.py (currently here; moving elsewhere soon)
+
+MongoDB has a LOT of operators to make database CRUD simple. Here is one example (https://www.mongodb.com/docs/manual/reference/operator/update/rename/). Explore others if you want to have a look. Personally, this has been much more streamlined compared to what I learned previously with Python/mySQL
+
+/end
