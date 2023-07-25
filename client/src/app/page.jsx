@@ -1,108 +1,94 @@
 'use client'
-import React from 'react';
+
+import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
-// CHANGE CODE TO REFLECT LANDING PAGE LAYOUT
 function page() {
-	const addContainerClassHandler = (e) => {
-		e.preventDefault()
-		document.getElementById('container').classList.add("register-mode")
-	}
-
-	const removeContainerClassHandler = (e) => {
-		e.preventDefault()
-		document.getElementById('container').classList.remove("register-mode")
-	}
-
 	return (
-		<div style={{ position: 'relative' }}>
-			<Image
-				src='/background.jpg'
-				alt='background'
-				fill={true}
-			/>
-			<div className='container' id='container'>
-				<div className='forms-container'>
-					<div className='login-and-register'>
-						<form className='login'>
-							<h2 className='title'>Log in</h2>
-							<div className='input-field'>
-								<label>
-									Email:
-									<input type='text' id='email' name='email'></input>
-								</label>
-							</div>
-
-							<div className='input-field'>
-								<label>
-									Password:
-									<input type='password' id='password' name='password'></input>
-								</label>
-							</div>
-
-							<button className='form-button'>Login</button>
-						</form>
-
-						<form className='register'>
-							<h2 className='title'>Register</h2>
-
-							<div className='input-field'>
-								<label>
-									First Name:
-									<input type='text' id='first_name' name='first_name'></input>
-								</label>
-							</div>
-
-							<div className='input-field'>
-								<label>
-									Last Name:
-									<input type='text' id='last_name' name='last_name'></input>
-								</label>
-							</div>
-
-							<div className='input-field'>
-								<label>
-									Email:
-									<input type='text' id='email' name='email'></input>
-								</label>
-							</div>
-
-							<div className='input-field'>
-								<label>
-									Password:
-									<input type='password' id='password' name='password'></input>
-								</label>
-							</div>
-
-							<div className='input-field'>
-								<label>
-									Date of Birth:
-									<input type='date' id='birthday' name='birthday'></input>
-								</label>
-							</div>
-
-							<button className='form-button'>Register</button>
-						</form>
-					</div>
+		<div className='body-div'>
+			<div className='nav-bar'>
+				<div className='nav-bar-component'>
+					<h1>yiip</h1>
+					{/*Add map route later*/}
+					<Link href="#">Map</Link>
+					{/*Didn't quite understand this part, ask for elaboration later.*/}
+					<Link href="#">I'm feeling lucky</Link>
 				</div>
 
-				<div className='panels-container'>
-					<div className='panel left-panel'>
-						<div className='content'>
-							<p>New here?</p>
-							<button className='form-button transparent' id='register-button' onClick={addContainerClassHandler}>Register</button>
-						</div>
-					</div>
-					<div className='panel right-panel'>
-						<div className='content'>
-							<p>Already Registered?</p>
-							<button className='form-button transparent' id='login-button' onClick={removeContainerClassHandler}>Login</button>
-						</div>
-					</div>
+				<div className='nav-bar-component'>
+					{/*Not totally sure what this button does yet?*/}
+					<Link href="#">About</Link>
+					{/*Made this into one button, since our login/register page is all in one.*/}
+					<Link href="/welcome" className='sign-up-btn'>Sign up/Login</Link>
 				</div>
 			</div>
+
+			{/*In future, find a way to populate this with 5 actual resturants from the DB.*/}
+			<div className='resturant-carousel'>
+				<div className='resturant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Resturant Image'
+					/>
+
+					<p>Resturant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='resturant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Resturant Image'
+					/>
+
+					<p>Resturant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='resturant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Resturant Image'
+					/>
+
+					<p>Resturant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='resturant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Resturant Image'
+					/>
+
+					<p>Resturant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='resturant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Resturant Image'
+					/>
+
+					<p>Resturant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+			</div>
+
 		</div>
 	)
 }
 
-export default page;
+export default page
