@@ -49,12 +49,12 @@ html {
     font-weight: bold;
 }
 
-.resturant-carousel {
+.restaurant-carousel {
     display: flex;
     margin: 250px auto 0;
 }
 
-.resturant {
+.restaurant {
     background-color: white;
     color: black;
     text-align: center;
@@ -64,7 +64,7 @@ html {
     border: solid 2px #124770;
 }
 
-.resturant p {
+.restaurant p {
     margin-bottom: 100px;
 }
 

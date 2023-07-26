@@ -30,6 +30,42 @@ function Profile() {
             <div className='socials'>
                 <p>socials here</p> // MAY NEED A FORM HERE TO ACCEPT USER INPUTTING THEIR SOCIAL MEDIAS
             </div>
+
+            <div className='restaurant'>
+                <Image
+					src={'/yiip-logo.png'}
+					height={250}
+					width={175}
+					alt='Placeholder Restaurant Image'
+				/>
+            </div>
+
+            <div className='restaurant'>
+                <Image
+					src={'/yiip-logo.png'}
+					height={250}
+					width={175}
+					alt='Placeholder Restaurant Image'
+				/>
+            </div>
+
+            <div className='restaurant'>
+                <Image
+					src={'/yiip-logo.png'}
+					height={250}
+					width={175}
+					alt='Placeholder Restaurant Image'
+				/>
+            </div>
+
+            <div className='restaurant'>
+                <Image
+					src={'/yiip-logo.png'}
+					height={250}
+					width={175}
+					alt='Placeholder Restaurant Image'
+				/>
+            </div>
         </>
     )
 }

@@ -25,49 +25,13 @@ function page() {
 			</div>
 
 			{/*In future, find a way to populate this with 5 actual resturants from the DB.*/}
-			<div className='resturant-carousel'>
-				<div className='resturant'>
+			<div className='restaurant-carousel'>
+				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
 						height={250}
 						width={175}
-						alt='Placeholder Resturant Image'
-					/>
-
-					<p>Restaurant Name</p>
-					<Link href='#'>{`See More >>>`}</Link>
-				</div>
-
-				<div className='resturant'>
-					<Image
-						src={'/yiip-logo.png'}
-						height={250}
-						width={175}
-						alt='Placeholder Resturant Image'
-					/>
-
-					<p>Restaurant Name</p>
-					<Link href='#'>{`See More >>>`}</Link>
-				</div>
-
-				<div className='resturant'>
-					<Image
-						src={'/yiip-logo.png'}
-						height={250}
-						width={175}
-						alt='Placeholder Resturant Image'
-					/>
-
-					<p>Restaurant Name</p>
-					<Link href='#'>{`See More >>>`}</Link>
-				</div>
-
-				<div className='resturant'>
-					<Image
-						src={'/yiip-logo.png'}
-						height={250}
-						width={175}
-						alt='Placeholder Resturant Image'
+						alt='Placeholder Restaurant Image'
 					/>
 
 					<p>Restaurant Name</p>
@@ -79,7 +43,43 @@ function page() {
 						src={'/yiip-logo.png'}
 						height={250}
 						width={175}
-						alt='Placeholder Resturant Image'
+						alt='Placeholder Restaurant Image'
+					/>
+
+					<p>Restaurant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='restaurant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Restaurant Image'
+					/>
+
+					<p>Restaurant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='restaurant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Restaurant Image'
+					/>
+
+					<p>Restaurant Name</p>
+					<Link href='#'>{`See More >>>`}</Link>
+				</div>
+
+				<div className='restaurant'>
+					<Image
+						src={'/yiip-logo.png'}
+						height={250}
+						width={175}
+						alt='Placeholder Restaurant Image'
 					/>
 
 					<p>Restaurant Name</p>
