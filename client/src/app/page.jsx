@@ -74,7 +74,7 @@ function page() {
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 
-				<div className='restaurant'>
+				<div className='resturant'>
 					<Image
 						src={'/yiip-logo.png'}
 						height={250}
@@ -86,7 +86,6 @@ function page() {
 					<Link href='#'>{`See More >>>`}</Link>
 				</div>
 			</div>
-
 		</div>
 	)
 }

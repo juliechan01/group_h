@@ -39,7 +39,10 @@ html {
     color: rgb(209, 209, 209);
 }
 
-.nav-bar-component h1, .logo {
+.nav-bar-component h1,
+.logo,
+.add-business h1 {
+    color: white;
     display: block;
     font-size: 2em;
     margin-top: 0.67em;
@@ -210,6 +213,29 @@ form.register {
 
 .right-panel .content {
     transform: translateX(800px);
+}
+
+.add-business {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-business form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 10px;
+}
+
+.add-business button{
+    color: white;
+    background-color: cornflowerblue;
+    border-radius: 55px;
+    padding: 5px;
 }
 
 /*Animation*/
