@@ -1,7 +1,9 @@
-from flask import app
+from flask_app import app
 from flask import render_template, redirect, request, session, flash
-from ..models.user_model import User
-from ..models.business_model import Business
+from flask_app.models import user_model
+from flask_app.models import business_model
+
+# include specicfic model, not class
 
 # Should we include two different html templates here, or have it be the same with 
 # rendering dependent on available elements?
@@ -10,8 +12,8 @@ from ..models.business_model import Business
 def view_business(id):
     if "user_id" in session: 
         return render_template('business_loggedin.html', 
-                            business = Business.getOneLoggedIn({"id" : id}), 
-                            user = User.get_one({"id" : session['user_id']}))
+                            business = business_model.Business.getOneLoggedIn({"id" : id}), 
+                            user = user_model.User.get_one({"id" : session['user_id']}))
     else:
         return render_template('business_loggedout.html', 
-                            business = Business.getOneLoggedOut({"id" : id}))
+                            business = business_model.Business.getOneLoggedOut({"id" : id}))
