@@ -2,8 +2,14 @@
 import React from 'react';
 
 // LOGOUT BUTTON
-const Logout = () => {
-    return null;
+const LogoutButton = () => {
+
+    const logoutHandler = () => {
+        //Clear out session
+        //navigate to the root page
+    }
+
+    return <button onClick={logoutHandler}>Logout</button>;
 }
 
-export default Logout;
+export default LogoutButton;
