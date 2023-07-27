@@ -212,6 +212,26 @@ form.register {
     transform: translateX(800px);
 }
 
+.details-page {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.details-page h1{
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
 /*Animation*/
 
 .container.register-mode:before {

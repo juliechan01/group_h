@@ -27,15 +27,18 @@ function page() {
 			{/*In future, find a way to populate this with 5 actual resturants from the DB.*/}
 			<div className='restaurant-carousel'>
 				<div className='restaurant'>
-					<Image
-						src={'/yiip-logo.png'}
-						height={250}
-						width={175}
-						alt='Placeholder Restaurant Image'
-					/>
+					<Link href='/1'> {/*Thought it'd be cool if clicking the image also worked the same as the see more button - Noah*/}
+						<Image
+							src={'/yiip-logo.png'}
+							height={250}
+							width={175}
+							alt='Placeholder Restaurant Image'
+						/>
+					</Link>
 
-					<p>Restaurant Name</p>
-					<Link href='#'>{`See More >>>`}</Link>
+					{/*This one actually goes somewhere!*/}
+					<p>Test Place</p>
+					<Link href='/1'>{`See More >>>`}</Link>
 				</div>
 
 				<div className='restaurant'>
