@@ -19,9 +19,6 @@ print(f"This is the connection string: {connection_string}")
 # mongoclient is a method at which I"m passing in a connection point
 client = MongoClient(connection_string)
 
-# db = client.yiip
-# users = db.users
-
 # paul soda-opolis will know more about this, so reach out to him (Brendan suggestion)
 app.config["MONGO_URI_TRACK_MODIFICATIONS"] = False
 app.config["MONGO_URI"] = f"mongodb+srv://amanleyskj:{password}@yiipcluster.of7olmw.mongodb.net/"
