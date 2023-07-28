@@ -3,8 +3,6 @@ from flask import Flask, jsonify
 from flask import redirect, request, session, flash
 from flask_bcrypt import Bcrypt
 # from flask_googlemaps import GoogleMaps, Map
-# from flask_app.controllers import user_controller
-# from flask_app.controllers import business_controller
 from flask_app.models import user_model, business_model
 
 app = Flask(__name__)
@@ -31,16 +29,17 @@ def create_user():
 
         if not user_model.User.validate_user(request.form):
             flash("Please check the errors in the form.")
-            return redirect('/')
+            return redirect('/welcome')
 
         pw_hash = bcrypt.generate_password_hash(request.form['password'])
 
         user_in_db = user_model.User.get_by_email(data_row)
         if user_in_db:
             flash("Sorry, but that email is not available to use.")
-            return redirect('/')
+            return redirect('/welcome')
 
         user_model.User.save(data_row)
+        return redirect('/')
 
 @app.route('/user_login', methods = ['POST'])
 def user_login():
@@ -52,10 +51,10 @@ def user_login():
 
         if not user_in_db:
             flash("Invalid Email/Password.")
-            return redirect('/')
+            return redirect('/welcome')
         if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
             flash("Invalid Email/Password.")
-            return redirect('/')
+            return redirect('/welcome')
 
         user_model.User.get_one_user()
         return redirect('/')
@@ -67,6 +66,7 @@ def user_login():
 @app.route('/one_user')
 def one_user():
     user_model.User.get_one_user()
+    return redirect('/profile')
 
 ### UPDATE
 ### UPDATE
