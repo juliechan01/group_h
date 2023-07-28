@@ -8,7 +8,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
 
-    db = "group_project"
+    db = "mydb"
 
     def __init__( self, data_row ):
         self.id = data_row['id']
@@ -49,7 +49,7 @@ class User:
         return cls(results[0])
     
     @classmethod
-    def get_one( cls, data):
+    def get_one_user( cls, data):
         query = """SELECT * FROM users WHERE id = %(id)s;"""
         results = connectToMySQL( cls.db ).query_db(query, data)
         if results:

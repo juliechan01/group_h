@@ -8,19 +8,18 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class Business:
 
-    db = "group_project"
+    db = "mydb"
 
     def __init__( self, data_row ):
         self.id = data_row['id']
-        self.type = data_row['type']
+        self.biz = data_row['biz']
         self.name = data_row['name']
         self.address = data_row['address']
-        self.phone_number = data_row['phone_number']
-        self.business_hours = data_row['business_hours']
-        self.offerings = data_row['offerings']
+        self.phone = data_row['phone']
+        self.hours = data_row['hours']
+        self.service = data_row['service']
         self.created_at = data_row['created_at']
         self.updated_at = data_row['updated_at']
-
 
 ##### CREATE
 ##### CREATE
@@ -28,8 +27,8 @@ class Business:
     @classmethod
     def save( cls, data_row ):
         query = """
-        INSERT INTO businesses (type, name, address, phone_number, business_hours, offerings)
-        VALUES (%(type)s, %(name)s, %(address)s, %(phone_number)s, %(business_hours)s, %(offerings)s);
+        INSERT INTO businesses (biz, name, address, phone, hours, service)
+        VALUES (%(biz)s, %(name)s, %(address)s, %(phone)s, %(hours)s, %(service)s);
         """
 
         business_name = data_row['name']
@@ -43,6 +42,13 @@ class Business:
 ### READ
 ### READ
     @classmethod
+    def get_all_businesses(cls):
+        all_businesses = []
+        query = "SELECT * FROM businesses"
+        results = connectToMySQL(cls.db).query_db(query)
+        return all_businesses.append(results)
+
+    @classmethod
     def get_all_businesses_with_user(cls):
         query = "SELECT * FROM businesses JOIN users ON businesses.user_id = users.id;"
         results = connectToMySQL(cls.db).query_db(query)
@@ -51,10 +57,10 @@ class Business:
             single_business = cls(data_row)
             single_business_user_info = {
                 'id' : data_row['users.id'],
-                'type' : data_row['type'],
+                'biz' : data_row['biz'],
                 'name' : data_row['name'],
                 'address' : data_row['address'],
-                'phone_number' : data_row['phone_number'],
+                'phone' : data_row['phone'],
                 'first_name' : data_row['first_name'],
                 'last_name' : data_row['last_name'],
                 'email' : data_row['email'],
@@ -67,6 +73,7 @@ class Business:
             # single_business.creator = business_creator
             all_businesses.append(single_business)
         return all_businesses
+
     
     @classmethod
     def get_business_with_user(cls,data):
@@ -89,12 +96,21 @@ class Business:
         business.creator = user_model.User(user_data)
         print("Business is as follows: ", business)
         return business
-
+    
     @classmethod
-    def get_business(cls,data):
-        query = "SELECT * FROM businesses LEFT JOIN users ON businesses.user_id = users.id WHERE businesses.id = %(id)s;"
+    def get_one_business(cls,data):
+        query = "SELECT * FROM businesses WHERE id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
         return cls(results[0])
+    
+    # @classmethod
+    # def get_random_business(cls):
+        
+    #     num = random.random()
+    #     query = "SELECT * FROM businesses LEFT JOIN users ON businesses.user_id = users.id WHERE businesses.id = %(id)s;"
+    #     results = connectToMySQL(cls.db).query_db(query, data)
+    #     return cls(results[0])
+
 
 
 ### UPDATE
@@ -103,9 +119,9 @@ class Business:
     @classmethod
     def edit_business(cls,data):
         query = """
-                UPDATE businesses SET id = %(id)s, type = %(type)s, name = %(name)s, 
-                address = %(address)s, phone_number = %(phone_number)s, 
-                business_hours = %(business_hours)s, offerings = %(offerings)s WHERE id = %(id)s;
+                UPDATE businesses SET id = %(id)s, biz = %(biz)s, name = %(name)s, 
+                address = %(address)s, phone = %(phone)s, 
+                hours = %(hours)s, service = %(service)s WHERE id = %(id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query,data)
         return results
@@ -127,7 +143,7 @@ class Business:
     @staticmethod
     def validate_business(form):
         is_valid = True
-        if form['type'] == '':
+        if form['biz'] == '':
             is_valid = False
             flash("Please provide a type.")
         if form['name'] == "":
@@ -136,13 +152,13 @@ class Business:
         if form['address'] == '':
             is_valid = False
             flash("Please include an address.")
-        if form['phone_number'] == '':
+        if form['phone'] == '':
             is_valid = False
             flash("You must include a phone number.")
-        if form['business_hours'] == '':
+        if form['hours'] == '':
             is_valid = False
             flash("Please provide business hours.")
-        if form['offerings'] == '':
+        if form['service'] == '':
             is_valid = False
             flash("What does this business do?")
         return is_valid
