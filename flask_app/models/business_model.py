@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from models import user_model
+from ..models import user_model
 
 import re
 
@@ -22,6 +22,26 @@ class Business:
         self.updated_at = data_row['updated_at']
 
 
+##### CREATE
+##### CREATE
+##### CREATE
+    @classmethod
+    def save( cls, data_row ):
+        query = """
+        INSERT INTO businesses (type, name, address, phone_number, business_hours, offerings)
+        VALUES (%(type)s, %(name)s, %(address)s, %(phone_number)s, %(business_hours)s, %(offerings)s);
+        """
+
+        business_name = data_row['name']
+        results = connectToMySQL(cls.db).query_db( query, data_row)
+        
+        print(f"The business {business_name} has been made.")
+        return results
+
+
+### READ
+### READ
+### READ
     @classmethod
     def get_all_businesses_with_user(cls):
         query = "SELECT * FROM businesses JOIN users ON businesses.user_id = users.id;"
@@ -31,7 +51,7 @@ class Business:
             single_business = cls(data_row)
             single_business_user_info = {
                 'id' : data_row['users.id'],
-                'tyoe' : data_row['type'],
+                'type' : data_row['type'],
                 'name' : data_row['name'],
                 'address' : data_row['address'],
                 'phone_number' : data_row['phone_number'],
@@ -47,19 +67,6 @@ class Business:
             # single_business.creator = business_creator
             all_businesses.append(single_business)
         return all_businesses
-
-    @classmethod
-    def save( cls, data_row ):
-        query = """
-        INSERT INTO businesses (type, name, address, phone_number, business_hours, offerings)
-        VALUES (%(type)s, %(name)s, %(address)s, %(phone_number)s, %(business_hours)s, %(offerings)s);
-        """
-
-        business_name = data_row['name']
-        results = connectToMySQL(cls.db).query_db( query, data_row)
-        
-        print(f"The business {business_name} has been made.")
-        return results
     
     @classmethod
     def get_business_with_user(cls,data):
@@ -90,6 +97,9 @@ class Business:
         return cls(results[0])
 
 
+### UPDATE
+### UPDATE
+### UPDATE
     @classmethod
     def edit_business(cls,data):
         query = """
@@ -100,6 +110,10 @@ class Business:
         results = connectToMySQL(cls.db).query_db(query,data)
         return results
 
+
+### DELETE
+### DELETE
+### DELETE
     @classmethod
     def delete_business(cls, data_row):
         query = """
@@ -107,6 +121,8 @@ class Business:
                 """
         results = connectToMySQL(cls.db).query_db(query, data_row)
         return results
+
+
 
     @staticmethod
     def validate_business(form):

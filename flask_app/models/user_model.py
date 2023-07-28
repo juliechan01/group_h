@@ -21,6 +21,9 @@ class User:
         self.updated_at = data_row['updated_at']
         self.my_businesses = []
 
+##### CREATE
+##### CREATE
+##### CREATE
     @classmethod
     def save(cls, data_row):
         query = """
@@ -33,6 +36,9 @@ class User:
         print("The name is here:" + user_first_name)
         return results
     
+### READ
+### READ
+### READ
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
@@ -49,6 +55,33 @@ class User:
         if results:
             return cls(results[0])
         return False
+
+
+### UPDATE
+### UPDATE
+### UPDATE
+    @classmethod
+    def edit_user(cls,data):
+        query = """
+                UPDATE users SET id = %(id)s, first_name = %(first_name)s, last_name = %(last_name)s, 
+                email = %(email)s, password = %(password)s, birthday = %(birthday)s WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query,data)
+        return results
+
+
+### DELETE
+### DELETE
+### DELETE
+    @classmethod
+    def delete_user(cls, data_row):
+        query = """
+                DELETE FROM users WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query, data_row)
+        return results
+
+
 
     @staticmethod
     def validate_user(form):
