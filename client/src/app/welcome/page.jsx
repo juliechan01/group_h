@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
+import axios from 'axios'
 
 function Welcome() {
 	const addContainerClassHandler = (e) => {
@@ -24,7 +25,7 @@ function Welcome() {
 			<div className='container' id='container'>
 				<div className='forms-container'>
 					<div className='login-and-register'>
-						<form className='login'>
+						<form className='login' action = "login" onSubmit={submitHandler} >
 							<h2 className='title'>Log in</h2>
 							<div className='input-field'>
 								<label>
@@ -43,7 +44,8 @@ function Welcome() {
 							<button className='form-button'>Login</button>
 						</form>
 
-						<form className='register'>
+
+						<form className='register' action = "register">
 							<h2 className='title'>Register</h2>
 
 							<div className='input-field'>
