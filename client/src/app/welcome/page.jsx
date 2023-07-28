@@ -43,7 +43,8 @@ function Welcome() {
 							<button className='form-button'>Login</button>
 						</form>
 
-						<form className='register'>
+
+						<form className='register' action = "register">
 							<h2 className='title'>Register</h2>
 
 							<div className='input-field'>
