@@ -1,9 +1,21 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 
 function Welcome() {
+
+	const [errors, setErrors] = useState([])
+	const [newUser, setNewUser] = useState({
+		first_name: "",
+		last_name: "",
+		email: "",
+		password: "",
+		birthday: ""
+	})
+	const [loginUser, setLoginUser] = useState({})
+
+
 	const addContainerClassHandler = (e) => {
 		e.preventDefault()
 		document.getElementById('container').classList.add("register-mode")
@@ -12,6 +24,45 @@ function Welcome() {
 	const removeContainerClassHandler = (e) => {
 		e.preventDefault()
 		document.getElementById('container').classList.remove("register-mode")
+	}
+
+	const newUserChangeHandler = e => {
+		setNewUser({ ...newUser, [e.target.name]: e.target.value })
+	}
+
+	const createUserHandler = async (e) => {
+		e.preventDefault()
+		console.log("#####", newUser)
+		let response = await fetch('http://localhost:8080/api/create_user', {
+			body: newUser,
+			method: 'post',
+			headers : {
+				'Content-Type':'application/json'
+			  }
+		})
+        console.log("444444444444444444444", response)
+		let data = await response.json()
+        console.log(data)
+		// await fetch('http://localhost:8080/api/create_user', {
+		// 	method: "post",
+		// 	body: newUser,
+		// 	mode: 'no-cors'
+		// })
+		// 	.then(response => {
+		// 		console.log(response.json())
+		// 	})
+		// 	.then((res) => {
+		// 		console.log(res)
+				// If first value is false, second value is errors
+				// if (!res[0]) {
+				// 	console.log("Errors found! Setting to state")
+				// 	console.log(res[1])
+				// 	setErrors([res[1]])
+				// }
+				// else {
+				// 	console.log(res[1])
+				// }
+			// })
 	}
 
 	return (
@@ -43,42 +94,41 @@ function Welcome() {
 							<button className='form-button'>Login</button>
 						</form>
 
-
-						<form className='register' action = "register">
+						<form className='register' onSubmit={createUserHandler}>
 							<h2 className='title'>Register</h2>
 
 							<div className='input-field'>
 								<label>
 									First Name:
-									<input type='text' id='first_name' name='first_name'></input>
+									<input type='text' id='first_name' name='first_name' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
 							<div className='input-field'>
 								<label>
 									Last Name:
-									<input type='text' id='last_name' name='last_name'></input>
+									<input type='text' id='last_name' name='last_name' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
 							<div className='input-field'>
 								<label>
 									Email:
-									<input type='text' id='email' name='email'></input>
+									<input type='text' id='email' name='email' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
 							<div className='input-field'>
 								<label>
 									Password:
-									<input type='password' id='password' name='password'></input>
+									<input type='password' id='password' name='password' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
 							<div className='input-field'>
 								<label>
 									Date of Birth:
-									<input type='date' id='birthday' name='birthday'></input>
+									<input type='date' id='birthday' name='birthday' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
