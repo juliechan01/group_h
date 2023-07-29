@@ -32,9 +32,9 @@ class User:
         """
 
         user_first_name = data_row['first_name']
-        results = connectToMySQL(cls.db).query_db( query, data_row)
+        user_id = connectToMySQL(cls.db).query_db( query, data_row)
         print("The name is here:" + user_first_name)
-        return results
+        return user_id
     
 ### READ
 ### READ
@@ -86,22 +86,25 @@ class User:
     @staticmethod
     def validate_user(form):
         is_valid = True
+        errors = {}
         if len(form['first_name']) < 2:
             is_valid = False
-            flash("Your first name must be two characters or more.")
+            errors["first_name"] = "Your first name must be two characters or more."
         if len(form['last_name']) < 2:
             is_valid = False
-            flash("Your last name must be two characters or more.")
+            errors["last_name"] ="Your last name must be two characters or more."
         if not EMAIL_REGEX.match(form['email']):
             is_valid = False
-            flash("Your email address must be in a valid format.")
+            errors["email"] ="Your email address must be in a valid format."
+
+            # Check if the email is already used - Noah
         if len(form['password']) < 8:
             is_valid = False
-            flash("Your password must be eight characters or more.")
+            errors["password"] ="Your password must be eight characters or more."
         if not form['password'] == form['confirm_password']:
             is_valid = False
-            flash("Your passwords must match.")
+            errors["confirm_password"] ="Your passwords must match."
         if (form['birthday']) < 18:
                 is_valid = False
-                flash("You must be 18 years old or older to join yiip.")
-        return is_valid
+                errors["birthday"] ="You must be 18 years old or older to join yiip."
+        return (is_valid, errors)
