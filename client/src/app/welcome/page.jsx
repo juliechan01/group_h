@@ -2,19 +2,23 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 
 function Welcome() {
 
-	const [errors, setErrors] = useState([])
+	const {push} = useRouter()
 	const [newUser, setNewUser] = useState({
-		first_name: "",
-		last_name: "",
+		firstName: "",
+		lastName: "",
 		email: "",
 		password: "",
+		confirmPassword: "",
 		birthday: ""
 	})
-	const [loginUser, setLoginUser] = useState({})
-
+	const [loginUser, setLoginUser] = useState({
+		email: "",
+		password: ""
+	})
 
 	const addContainerClassHandler = (e) => {
 		e.preventDefault()
@@ -30,39 +34,26 @@ function Welcome() {
 		setNewUser({ ...newUser, [e.target.name]: e.target.value })
 	}
 
-	const createUserHandler = async (e) => {
+	const createUserHandler = (e) => {
 		e.preventDefault()
-		console.log("#####", newUser)
-		let response = await fetch('http://localhost:8080/api/create_user', {
-			body: newUser,
+		fetch('http://localhost:8080/api/user', {
+			body: JSON.stringify(newUser),
 			method: 'post',
-			headers : {
-				'Content-Type':'application/json'
-			  }
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		})
-        console.log("444444444444444444444", response)
-		let data = await response.json()
-        console.log(data)
-		// await fetch('http://localhost:8080/api/create_user', {
-		// 	method: "post",
-		// 	body: newUser,
-		// 	mode: 'no-cors'
-		// })
-		// 	.then(response => {
-		// 		console.log(response.json())
-		// 	})
-		// 	.then((res) => {
-		// 		console.log(res)
-				// If first value is false, second value is errors
-				// if (!res[0]) {
-				// 	console.log("Errors found! Setting to state")
-				// 	console.log(res[1])
-				// 	setErrors([res[1]])
-				// }
-				// else {
-				// 	console.log(res[1])
-				// }
-			// })
+			.then(res => {
+				console.log(res)
+				if(res.status === 201){
+					push('/')
+				}
+			})
+			.catch(err => {
+				alert('Errors detected! Check console for message!')
+				console.log(err)
+			})
+
 	}
 
 	return (
@@ -100,14 +91,14 @@ function Welcome() {
 							<div className='input-field'>
 								<label>
 									First Name:
-									<input type='text' id='first_name' name='first_name' onChange={newUserChangeHandler}></input>
+									<input type='text' id='firstName' name='firstName' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
 							<div className='input-field'>
 								<label>
 									Last Name:
-									<input type='text' id='last_name' name='last_name' onChange={newUserChangeHandler}></input>
+									<input type='text' id='lastName' name='lastName' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 
@@ -122,6 +113,13 @@ function Welcome() {
 								<label>
 									Password:
 									<input type='password' id='password' name='password' onChange={newUserChangeHandler}></input>
+								</label>
+							</div>
+
+							<div className='input-field'>
+								<label>
+									Confirm Password:
+									<input type='password' id='confirmPassword' name='confirmPassword' onChange={newUserChangeHandler}></input>
 								</label>
 							</div>
 

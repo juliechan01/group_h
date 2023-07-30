@@ -19,10 +19,10 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # CREATE
 # CREATE
 
-@app.route('/api/create_user', methods=['POST'])# 
+@app.route('/api/create_user', methods=['POST']) 
 def create_user():
     # print("#####################", request.json())
-    # x = user_model.User.validate_user(request.data)
+    x = user_model.User.validate_user(request.data)
 
     # print(request.data['first_name'])
     # print(request.args.first_name)
@@ -184,4 +184,4 @@ def delete_business(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True)
