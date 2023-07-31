@@ -1,5 +1,6 @@
+'use client'
+
 import React, { useState } from 'react';
-import CancelButton from './CancelButton';
 
 const BusinessForm = (props) => {
     const { initialBiz, initialName, initialAddress, initialPhone, initialHours, initialService, createBiz, errors } = props;
