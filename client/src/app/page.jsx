@@ -30,7 +30,7 @@ function page() {
 					<Link href='/1'> {/*Thought it'd be cool if clicking the image also worked the same as the see more button - Noah*/}
 						<Image
 							src={'/yiip-logo.png'}
-							height={250}
+							height={125}
 							width={175}
 							alt='Placeholder Restaurant Image'
 						/>
@@ -44,7 +44,7 @@ function page() {
 				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
-						height={250}
+						height={125}
 						width={175}
 						alt='Placeholder Restaurant Image'
 					/>
@@ -56,7 +56,7 @@ function page() {
 				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
-						height={250}
+						height={125}
 						width={175}
 						alt='Placeholder Restaurant Image'
 					/>
@@ -68,7 +68,7 @@ function page() {
 				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
-						height={250}
+						height={125}
 						width={175}
 						alt='Placeholder Restaurant Image'
 					/>
@@ -80,7 +80,7 @@ function page() {
 				<div className='restaurant'>
 					<Image
 						src={'/yiip-logo.png'}
-						height={250}
+						height={125}
 						width={175}
 						alt='Placeholder Restaurant Image'
 					/>
